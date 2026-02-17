@@ -1,12 +1,20 @@
 import Image from "next/image";
+import {
+  IconKeyboard, IconAgent, IconLink, IconChart,
+  IconClipboard, IconRocket, IconBarChart, IconTarget,
+  IconShield, IconTemplate,
+  LogoCursor, LogoClaude, LogoOpenClaw, LogoSlack, LogoNotion,
+  LogoJira, LogoGitHub, LogoGoogle, LogoMicrosoft,
+  LogoHubSpot, LogoLinear, LogoConfluence,
+} from "@/components/icons";
 
 /* ── data ── */
 
 const featureBento = [
-  { title: "Cursor + Claude Code", desc: "Workshops that turn \"I tried it once\" into daily muscle memory.", tag: "Training", icon: "⌨️", color: "var(--a)" },
-  { title: "OpenClaw agents", desc: "Automate the boring parts of work: reporting, ops, triage, follow-ups.", tag: "Automation", icon: "🤖", color: "var(--c)" },
-  { title: "Your stack", desc: "Slack, Gmail/O365, Notion, Jira, GitHub, CRMs — we wire it to your workflows.", tag: "Integrations", icon: "🔗", color: "var(--b)" },
-  { title: "Adoption that sticks", desc: "Enablement + guardrails: templates, playbooks, and measurable outcomes.", tag: "Change", icon: "📈", color: "var(--a)" },
+  { title: "Cursor + Claude Code", desc: "Workshops that turn \"I tried it once\" into daily muscle memory.", tag: "Training", Icon: IconKeyboard, color: "var(--a)" },
+  { title: "OpenClaw agents", desc: "Automate the boring parts of work: reporting, ops, triage, follow-ups.", tag: "Automation", Icon: IconAgent, color: "var(--c)" },
+  { title: "Your stack", desc: "Slack, Gmail/O365, Notion, Jira, GitHub, CRMs — we wire it to your workflows.", tag: "Integrations", Icon: IconLink, color: "var(--b)" },
+  { title: "Adoption that sticks", desc: "Enablement + guardrails: templates, playbooks, and measurable outcomes.", tag: "Change", Icon: IconChart, color: "var(--a)" },
 ];
 
 const outcomes = [
@@ -16,42 +24,30 @@ const outcomes = [
 ];
 
 const automationExamples = [
-  { title: "Meeting → actions → tickets", desc: "Turn calls into structured actions, Jira tickets, and owner follow-ups automatically.", chips: ["Calendar", "Docs", "Jira"], icon: "📋", accent: "var(--a)" },
-  { title: "Sales ops autopilot", desc: "Lead enrichment, personalised first email drafts, and CRM updates — with human approval.", chips: ["CRM", "Email", "Approval"], icon: "🚀", accent: "var(--c)" },
-  { title: "Weekly status without suffering", desc: "Pull metrics, generate updates, post to Slack, and keep a decision log.", chips: ["GitHub", "Notion", "Slack"], icon: "📊", accent: "var(--b)" },
-  { title: "Inbox triage for teams", desc: "Route, summarise, and respond to common requests (support, internal ops, HR).", chips: ["O365", "Gmail", "Policies"], icon: "📬", accent: "var(--a)" },
+  { title: "Meeting → actions → tickets", desc: "Turn calls into structured actions, Jira tickets, and owner follow-ups automatically.", chips: ["Calendar", "Docs", "Jira"], Icon: IconClipboard, accent: "var(--a)" },
+  { title: "Sales ops autopilot", desc: "Lead enrichment, personalised first email drafts, and CRM updates — with human approval.", chips: ["CRM", "Email", "Approval"], Icon: IconRocket, accent: "var(--c)" },
+  { title: "Weekly status without suffering", desc: "Pull metrics, generate updates, post to Slack, and keep a decision log.", chips: ["GitHub", "Notion", "Slack"], Icon: IconBarChart, accent: "var(--b)" },
+  { title: "Inbox triage for teams", desc: "Route, summarise, and respond to common requests (support, internal ops, HR).", chips: ["O365", "Gmail", "Policies"], Icon: IconAgent, accent: "var(--a)" },
 ];
 
 const pricing = [
   {
-    name: "Workshop",
-    price: "$2,500",
-    unit: "per session",
+    name: "Workshop", price: "$2,500", unit: "per session",
     desc: "Hands-on AI developer training for your team.",
     features: ["1–2 hour session", "Up to 15 devs", "Real-repo exercises", "Team playbook", "Prompt library"],
-    cta: "Book a workshop",
-    highlight: false,
-    accent: "var(--b)",
+    cta: "Book a workshop", highlight: false, accent: "var(--b)",
   },
   {
-    name: "Pilot",
-    price: "$8,000",
-    unit: "2–4 week engagement",
+    name: "Pilot", price: "$8,000", unit: "2–4 week engagement",
     desc: "Workshop + shipped automations + adoption plan.",
     features: ["Everything in Workshop", "1–3 automations live", "Runbooks & handover", "Governance setup", "2 weeks async support"],
-    cta: "Start a pilot",
-    highlight: true,
-    accent: "var(--a)",
+    cta: "Start a pilot", highlight: true, accent: "var(--a)",
   },
   {
-    name: "Retainer",
-    price: "$4,000",
-    unit: "per month",
+    name: "Retainer", price: "$4,000", unit: "per month",
     desc: "Ongoing automation, enablement, and optimisation.",
     features: ["Continuous automation builds", "New workflow rollouts", "Office hours", "Quarterly reviews", "Priority support"],
-    cta: "Let's talk",
-    highlight: false,
-    accent: "var(--c)",
+    cta: "Let's talk", highlight: false, accent: "var(--c)",
   },
 ];
 
@@ -62,32 +58,33 @@ const faqs = [
   { q: "What do you need from us?", a: "A small pilot group (5–15 people), a sponsor, and access to the tools you want to improve." },
 ];
 
-const marqueeItems = [
-  "Cursor", "Claude Code", "OpenClaw", "Slack", "Notion", "Jira", "GitHub",
-  "Google Workspace", "Microsoft 365", "HubSpot", "Linear", "Confluence",
+const integrations = [
+  { name: "Cursor", Logo: LogoCursor },
+  { name: "Claude Code", Logo: LogoClaude },
+  { name: "OpenClaw", Logo: LogoOpenClaw },
+  { name: "Slack", Logo: LogoSlack },
+  { name: "Notion", Logo: LogoNotion },
+  { name: "Jira", Logo: LogoJira },
+  { name: "GitHub", Logo: LogoGitHub },
+  { name: "Google", Logo: LogoGoogle },
+  { name: "Microsoft", Logo: LogoMicrosoft },
+  { name: "HubSpot", Logo: LogoHubSpot },
+  { name: "Linear", Logo: LogoLinear },
+  { name: "Confluence", Logo: LogoConfluence },
 ];
 
 /* ── components ── */
 
 function Chip({ text, color }: { text: string; color?: string }) {
   return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-xs"
-      style={{
-        background: color ? `color-mix(in srgb, ${color} 12%, transparent)` : "rgba(255,255,255,0.06)",
-        border: `1px solid ${color ? `color-mix(in srgb, ${color} 25%, transparent)` : "rgba(255,255,255,0.10)"}`,
-        color: color || "rgba(255,255,255,0.72)",
-      }}
-    >
+    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs" style={{ background: color ? `color-mix(in srgb, ${color} 12%, transparent)` : "rgba(255,255,255,0.06)", border: `1px solid ${color ? `color-mix(in srgb, ${color} 25%, transparent)` : "rgba(255,255,255,0.10)"}`, color: color || "rgba(255,255,255,0.72)" }}>
       {text}
     </span>
   );
 }
 
 function SectionLabel({ text, color }: { text: string; color?: string }) {
-  return (
-    <div className="mono text-sm tracking-wide" style={{ color: color || "var(--muted)" }}>{text}</div>
-  );
+  return <div className="mono text-sm tracking-wide" style={{ color: color || "var(--muted)" }}>{text}</div>;
 }
 
 /* ── page ── */
@@ -110,9 +107,7 @@ export default function Home() {
             <a href="#examples" className="text-muted hover:text-white transition-colors">Automations</a>
             <a href="#pricing" className="text-muted hover:text-white transition-colors">Pricing</a>
             <a href="#faq" className="text-muted hover:text-white transition-colors">FAQ</a>
-            <a href="#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">
-              Book a call
-            </a>
+            <a href="#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
           </div>
         </div>
       </nav>
@@ -120,7 +115,6 @@ export default function Home() {
       {/* ── Hero ── */}
       <section id="top" className="relative pt-28 md:pt-36 overflow-hidden">
         <div className="absolute inset-0 bg-grid" />
-
         <div className="relative max-w-7xl mx-auto px-6 pb-16 md:pb-20">
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <Chip text="Sydney-based" color="var(--c)" />
@@ -131,26 +125,15 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1.3fr_1fr] gap-14 items-start">
             <div>
               <h1 className="text-5xl md:text-[4.5rem] font-semibold leading-[0.95] tracking-tight">
-                Make AI
-                <br />
-                <span className="text-gradient">useful</span>
-                <br />
-                on Monday.
+                Make AI<br /><span className="text-gradient">useful</span><br />on Monday.
               </h1>
-
               <p className="mt-7 text-lg md:text-xl text-muted max-w-xl leading-relaxed">
                 Most teams have AI tools. Few have AI habits. We train your people and ship automations so adoption becomes a system — not a vibe.
               </p>
-
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <a href="#contact" className="btn-primary px-7 py-4 rounded-full text-[15px] transition-all hover:scale-[1.03]">
-                  Book a free 30‑min discovery →
-                </a>
-                <a href="#examples" className="btn-secondary px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">
-                  See automation examples
-                </a>
+                <a href="#contact" className="btn-primary px-7 py-4 rounded-full text-[15px] transition-all hover:scale-[1.03]">Book a free 30‑min discovery →</a>
+                <a href="#examples" className="btn-secondary px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">See automation examples</a>
               </div>
-
               <div className="mt-10 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
                 <span><span style={{ color: "var(--a)" }}>Format:</span> 1–2h workshops + 2–4 week pilot</span>
                 <span className="hidden sm:inline">•</span>
@@ -167,10 +150,7 @@ export default function Home() {
                 <span className="ml-3 text-[11px] text-muted">ai-shift-hq — workflow</span>
               </div>
               <div className="p-5 space-y-3 text-[13px]">
-                <div>
-                  <span className="text-muted">$</span>{" "}
-                  <span style={{ color: "var(--a)" }}>openclaw</span> deploy --agent sales-ops
-                </div>
+                <div><span className="text-muted">$</span> <span style={{ color: "var(--a)" }}>openclaw</span> deploy --agent sales-ops</div>
                 <div className="text-muted">
                   <span style={{ color: "var(--a)" }}>✓</span> Connected to Slack, HubSpot, Gmail<br />
                   <span style={{ color: "var(--a)" }}>✓</span> Lead enrichment pipeline live<br />
@@ -178,20 +158,14 @@ export default function Home() {
                   <span style={{ color: "var(--a)" }}>✓</span> CRM auto-update on approval
                 </div>
                 <div className="divider my-3" />
-                <div>
-                  <span className="text-muted">$</span>{" "}
-                  <span style={{ color: "var(--c)" }}>cursor</span> train --team backend --repo main
-                </div>
+                <div><span className="text-muted">$</span> <span style={{ color: "var(--c)" }}>cursor</span> train --team backend --repo main</div>
                 <div className="text-muted">
                   <span style={{ color: "var(--c)" }}>✓</span> Context rules generated from codebase<br />
                   <span style={{ color: "var(--c)" }}>✓</span> 12 prompt templates → .cursor/prompts/<br />
                   <span style={{ color: "var(--c)" }}>✓</span> Team playbook exported
                 </div>
                 <div className="divider my-3" />
-                <div>
-                  <span className="text-muted">$</span>{" "}
-                  <span style={{ color: "var(--b)" }}>status</span>
-                </div>
+                <div><span className="text-muted">$</span> <span style={{ color: "var(--b)" }}>status</span></div>
                 <div className="text-muted">
                   agents: <span style={{ color: "var(--a)" }}>3 active</span> · automations: <span style={{ color: "var(--c)" }}>7 running</span><br />
                   time saved this week: <span className="text-white">~38 hrs across team</span>
@@ -202,14 +176,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Marquee ── */}
-      <div className="py-6 overflow-hidden" style={{ borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="marquee-track">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
-            <span key={i} className="flex-shrink-0 px-8 text-sm whitespace-nowrap" style={{ color: i % 3 === 0 ? "rgba(180,255,57,0.5)" : i % 3 === 1 ? "rgba(0,210,255,0.5)" : "rgba(124,92,255,0.5)" }}>
-              {item}
-            </span>
-          ))}
+      {/* ── Integrations strip ── */}
+      <div className="py-8 overflow-hidden" style={{ borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {integrations.map((int) => (
+              <div key={int.name} className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                <int.Logo size={20} />
+                <span className="text-sm text-muted">{int.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -247,18 +224,18 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Training card */}
+            {/* Training */}
             <div className="rounded-3xl p-8" style={{ background: "linear-gradient(135deg, rgba(180,255,57,0.06), rgba(0,210,255,0.03))", border: "1px solid rgba(180,255,57,0.15)" }}>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">⌨️</span>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(180,255,57,0.1)", border: "1px solid rgba(180,255,57,0.2)" }}>
+                    <IconKeyboard size={22} color="#B4FF39" />
+                  </div>
                   <h3 className="text-2xl font-semibold">AI Developer Training</h3>
                 </div>
                 <Chip text="1–2h" color="var(--a)" />
               </div>
-              <p className="mt-4 text-muted leading-relaxed">
-                Cursor + Claude Code (or your preferred stack). Real repo. Real PRs. Real patterns your team can repeat.
-              </p>
+              <p className="mt-4 text-muted leading-relaxed">Cursor + Claude Code (or your preferred stack). Real repo. Real PRs. Real patterns your team can repeat.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["Prompting for codebase context", "AI-assisted debugging", "Refactors & migrations", "PR review workflows"].map((t) => <Chip key={t} text={t} color="var(--a)" />)}
               </div>
@@ -272,18 +249,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Automation card */}
+            {/* Automation */}
             <div className="rounded-3xl p-8" style={{ background: "linear-gradient(135deg, rgba(0,210,255,0.06), rgba(124,92,255,0.03))", border: "1px solid rgba(0,210,255,0.15)" }}>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🤖</span>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(0,210,255,0.1)", border: "1px solid rgba(0,210,255,0.2)" }}>
+                    <IconAgent size={22} color="#00D2FF" />
+                  </div>
                   <h3 className="text-2xl font-semibold">AI Workflow Automation</h3>
                 </div>
                 <Chip text="2–4 weeks" color="var(--c)" />
               </div>
-              <p className="mt-4 text-muted leading-relaxed">
-                We deploy OpenClaw agents that move information between your tools, draft responses, and keep work unblocked — with approvals and audit trails.
-              </p>
+              <p className="mt-4 text-muted leading-relaxed">We deploy OpenClaw agents that move information between your tools, draft responses, and keep work unblocked — with approvals and audit trails.</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {["Slack agents", "Email triage", "Notion ops", "Jira automation", "Executive summaries"].map((t) => <Chip key={t} text={t} color="var(--c)" />)}
               </div>
@@ -301,26 +278,12 @@ export default function Home() {
           {/* bento grid */}
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {featureBento.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-2xl p-5 transition-transform hover:scale-[1.02]"
-                style={{
-                  background: `linear-gradient(135deg, color-mix(in srgb, ${f.color} 8%, transparent), transparent)`,
-                  border: `1px solid color-mix(in srgb, ${f.color} 15%, transparent)`,
-                }}
-              >
+              <div key={f.title} className="rounded-2xl p-5 transition-transform hover:scale-[1.02]" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${f.color} 8%, transparent), transparent)`, border: `1px solid color-mix(in srgb, ${f.color} 15%, transparent)` }}>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xl">{f.icon}</span>
-                  <span
-                    className="mono text-xs px-3 py-1 rounded-full"
-                    style={{
-                      background: `color-mix(in srgb, ${f.color} 10%, transparent)`,
-                      border: `1px solid color-mix(in srgb, ${f.color} 20%, transparent)`,
-                      color: f.color,
-                    }}
-                  >
-                    {f.tag}
-                  </span>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: `color-mix(in srgb, ${f.color} 10%, transparent)`, border: `1px solid color-mix(in srgb, ${f.color} 18%, transparent)` }}>
+                    <f.Icon size={20} color={f.color === "var(--a)" ? "#B4FF39" : f.color === "var(--c)" ? "#00D2FF" : "#7C5CFF"} />
+                  </div>
+                  <span className="mono text-xs px-3 py-1 rounded-full" style={{ background: `color-mix(in srgb, ${f.color} 10%, transparent)`, border: `1px solid color-mix(in srgb, ${f.color} 20%, transparent)`, color: f.color }}>{f.tag}</span>
                 </div>
                 <div className="text-lg font-semibold">{f.title}</div>
                 <p className="text-sm text-muted mt-2 leading-relaxed">{f.desc}</p>
@@ -336,12 +299,8 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-start">
             <div>
               <SectionLabel text="what you get" color="var(--b)" />
-              <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-                A repeatable adoption system.
-              </h2>
-              <p className="mt-5 text-lg text-muted leading-relaxed">
-                Not a generic training day. You&apos;ll walk away with working routines, templates, and the first set of automations live.
-              </p>
+              <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">A repeatable adoption system.</h2>
+              <p className="mt-5 text-lg text-muted leading-relaxed">Not a generic training day. You&apos;ll walk away with working routines, templates, and the first set of automations live.</p>
               <div className="mt-8 rounded-2xl p-6" style={{ background: "rgba(124,92,255,0.06)", border: "1px solid rgba(124,92,255,0.15)" }}>
                 <div className="mono text-sm" style={{ color: "var(--b)" }}>Typical engagement</div>
                 <ol className="mt-4 space-y-3 text-sm text-muted">
@@ -354,41 +313,40 @@ export default function Home() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              {[
-                { t: "Templates", d: "Prompt libraries, checklists, and reusable patterns for your team.", icon: "📄", color: "var(--a)" },
-                { t: "Guardrails", d: "Approvals, access controls, and logging designed for sane governance.", icon: "🛡️", color: "var(--c)" },
-                { t: "Metrics", d: "Adoption and impact tracked with simple, defensible measures.", icon: "📊", color: "var(--b)" },
-                { t: "Enablement", d: "Office hours, async support, and internal champions setup.", icon: "🎯", color: "var(--a)" },
-              ].map((c) => (
-                <div
-                  key={c.t}
-                  className="rounded-2xl p-6"
-                  style={{
-                    background: `linear-gradient(135deg, color-mix(in srgb, ${c.color} 6%, transparent), transparent)`,
-                    border: `1px solid color-mix(in srgb, ${c.color} 15%, transparent)`,
-                  }}
-                >
-                  <div className="text-2xl mb-3">{c.icon}</div>
+              {([
+                { t: "Templates", d: "Prompt libraries, checklists, and reusable patterns for your team.", Icon: IconTemplate, color: "var(--a)" },
+                { t: "Guardrails", d: "Approvals, access controls, and logging designed for sane governance.", Icon: IconShield, color: "var(--c)" },
+                { t: "Metrics", d: "Adoption and impact tracked with simple, defensible measures.", Icon: IconBarChart, color: "var(--b)" },
+                { t: "Enablement", d: "Office hours, async support, and internal champions setup.", Icon: IconTarget, color: "var(--a)" },
+              ] as const).map((c) => (
+                <div key={c.t} className="rounded-2xl p-6" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${c.color} 6%, transparent), transparent)`, border: `1px solid color-mix(in srgb, ${c.color} 15%, transparent)` }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `color-mix(in srgb, ${c.color} 10%, transparent)`, border: `1px solid color-mix(in srgb, ${c.color} 18%, transparent)` }}>
+                    <c.Icon size={22} color={c.color === "var(--a)" ? "#B4FF39" : c.color === "var(--c)" ? "#00D2FF" : "#7C5CFF"} />
+                  </div>
                   <div className="text-lg font-semibold">{c.t}</div>
                   <p className="mt-2 text-sm text-muted leading-relaxed">{c.d}</p>
                 </div>
               ))}
+              {/* Integration logos row */}
               <div className="rounded-2xl p-6 md:col-span-2" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {[
-                    { t: "Cursor", c: "var(--a)" },
-                    { t: "Claude Code", c: "var(--a)" },
-                    { t: "OpenClaw", c: "var(--c)" },
-                    { t: "Slack", c: "var(--b)" },
-                    { t: "Notion", c: "var(--c)" },
-                    { t: "Jira", c: "var(--c)" },
-                    { t: "GitHub", c: "var(--a)" },
-                    { t: "Google / Microsoft", c: "var(--b)" },
-                  ].map((item) => <Chip key={item.t} text={item.t} color={item.c} />)}
+                    { t: "Cursor", c: "var(--a)", L: LogoCursor },
+                    { t: "Claude Code", c: "var(--a)", L: LogoClaude },
+                    { t: "OpenClaw", c: "var(--c)", L: LogoOpenClaw },
+                    { t: "Slack", c: "var(--b)", L: LogoSlack },
+                    { t: "Notion", c: "var(--c)", L: LogoNotion },
+                    { t: "Jira", c: "var(--c)", L: LogoJira },
+                    { t: "GitHub", c: "var(--a)", L: LogoGitHub },
+                    { t: "Google / Microsoft", c: "var(--b)", L: LogoGoogle },
+                  ].map((item) => (
+                    <span key={item.t} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs" style={{ background: `color-mix(in srgb, ${item.c} 8%, transparent)`, border: `1px solid color-mix(in srgb, ${item.c} 18%, transparent)`, color: item.c }}>
+                      <item.L size={14} />
+                      {item.t}
+                    </span>
+                  ))}
                 </div>
-                <p className="mt-3 text-sm text-muted">
-                  We&apos;ll meet you where you are. The goal is less tool sprawl — more consistent outcomes.
-                </p>
+                <p className="mt-3 text-sm text-muted">We&apos;ll meet you where you are. The goal is less tool sprawl — more consistent outcomes.</p>
               </div>
             </div>
           </div>
@@ -401,33 +359,23 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-10 items-end mb-14">
             <div>
               <SectionLabel text="automation examples" color="var(--a)" />
-              <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-                Agents that actually help.
-              </h2>
-              <p className="mt-5 text-lg text-muted leading-relaxed max-w-xl">
-                We focus on workflows with clear inputs/outputs, approvals where needed, and measurable impact.
-              </p>
+              <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">Agents that actually help.</h2>
+              <p className="mt-5 text-lg text-muted leading-relaxed max-w-xl">We focus on workflows with clear inputs/outputs, approvals where needed, and measurable impact.</p>
             </div>
             <div className="rounded-2xl p-6 text-sm text-muted leading-relaxed" style={{ background: "rgba(180,255,57,0.04)", border: "1px solid rgba(180,255,57,0.12)" }}>
-              <span style={{ color: "var(--a)" }}>Rule:</span> If an automation can&apos;t be explained in one sentence, it&apos;s not ready.<br />
-              Simple → reliable → scalable.
+              <span style={{ color: "var(--a)" }}>Rule:</span> If an automation can&apos;t be explained in one sentence, it&apos;s not ready. Simple → reliable → scalable.
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {automationExamples.map((ex) => (
-              <div
-                key={ex.title}
-                className="rounded-3xl p-8 transition-transform hover:scale-[1.01]"
-                style={{
-                  background: `linear-gradient(135deg, color-mix(in srgb, ${ex.accent} 6%, transparent), transparent)`,
-                  border: `1px solid color-mix(in srgb, ${ex.accent} 15%, transparent)`,
-                }}
-              >
+              <div key={ex.title} className="rounded-3xl p-8 transition-transform hover:scale-[1.01]" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${ex.accent} 6%, transparent), transparent)`, border: `1px solid color-mix(in srgb, ${ex.accent} 15%, transparent)` }}>
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3">
-                      <span className="text-xl">{ex.icon}</span>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `color-mix(in srgb, ${ex.accent} 10%, transparent)`, border: `1px solid color-mix(in srgb, ${ex.accent} 18%, transparent)` }}>
+                        <ex.Icon size={20} color={ex.accent === "var(--a)" ? "#B4FF39" : ex.accent === "var(--c)" ? "#00D2FF" : "#7C5CFF"} />
+                      </div>
                       <span className="text-xl font-semibold">{ex.title}</span>
                     </div>
                     <p className="mt-3 text-sm text-muted leading-relaxed">{ex.desc}</p>
@@ -450,26 +398,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <SectionLabel text="pricing" color="var(--a)" />
-            <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-              Transparent pricing. No surprises.
-            </h2>
-            <p className="mt-5 text-lg text-muted leading-relaxed max-w-2xl mx-auto">
-              All prices in AUD. Start with a workshop, upgrade to a pilot, then scale with a retainer.
-            </p>
+            <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">Transparent pricing. No surprises.</h2>
+            <p className="mt-5 text-lg text-muted leading-relaxed max-w-2xl mx-auto">All prices in AUD. Start with a workshop, upgrade to a pilot, then scale with a retainer.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {pricing.map((tier) => (
-              <div
-                key={tier.name}
-                className={`rounded-3xl p-8 flex flex-col ${tier.highlight ? "glow-border" : ""}`}
-                style={{
-                  background: tier.highlight
-                    ? "linear-gradient(135deg, rgba(180,255,57,0.08), rgba(0,210,255,0.04))"
-                    : `linear-gradient(135deg, color-mix(in srgb, ${tier.accent} 5%, transparent), transparent)`,
-                  border: tier.highlight ? "none" : `1px solid color-mix(in srgb, ${tier.accent} 15%, transparent)`,
-                }}
-              >
+              <div key={tier.name} className={`rounded-3xl p-8 flex flex-col ${tier.highlight ? "glow-border" : ""}`} style={{ background: tier.highlight ? "linear-gradient(135deg, rgba(180,255,57,0.08), rgba(0,210,255,0.04))" : `linear-gradient(135deg, color-mix(in srgb, ${tier.accent} 5%, transparent), transparent)`, border: tier.highlight ? "none" : `1px solid color-mix(in srgb, ${tier.accent} 15%, transparent)` }}>
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="mono text-sm" style={{ color: tier.accent }}>{tier.name}</div>
                   <div className="mt-3 flex items-baseline gap-2">
@@ -485,12 +420,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#contact"
-                    className={`mt-8 text-center px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-[1.03] ${tier.highlight ? "btn-primary" : "btn-secondary"}`}
-                  >
-                    {tier.cta}
-                  </a>
+                  <a href="#contact" className={`mt-8 text-center px-6 py-3 rounded-full font-semibold text-sm transition-all hover:scale-[1.03] ${tier.highlight ? "btn-primary" : "btn-secondary"}`}>{tier.cta}</a>
                 </div>
               </div>
             ))}
@@ -504,12 +434,8 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-14">
             <div>
               <SectionLabel text="frequently asked" color="var(--c)" />
-              <h2 className="mt-3 text-4xl font-semibold tracking-tight">
-                Questions we get.
-              </h2>
-              <p className="mt-5 text-muted leading-relaxed">
-                If your question isn&apos;t here, book a call. We&apos;d rather talk than let assumptions stall a decision.
-              </p>
+              <h2 className="mt-3 text-4xl font-semibold tracking-tight">Questions we get.</h2>
+              <p className="mt-5 text-muted leading-relaxed">If your question isn&apos;t here, book a call. We&apos;d rather talk than let assumptions stall a decision.</p>
             </div>
             <div className="space-y-0">
               {faqs.map((f, i) => (
@@ -532,22 +458,13 @@ export default function Home() {
             <div className="relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
               <div>
                 <SectionLabel text="get started" color="var(--a)" />
-                <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-                  Want a pilot in 30&nbsp;days?
-                </h2>
-                <p className="mt-5 text-lg text-muted leading-relaxed max-w-xl">
-                  Tell us what&apos;s slowing your team down. We&apos;ll propose a short workshop + a pilot automation roadmap — no commitment.
-                </p>
-
+                <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">Want a pilot in 30&nbsp;days?</h2>
+                <p className="mt-5 text-lg text-muted leading-relaxed max-w-xl">Tell us what&apos;s slowing your team down. We&apos;ll propose a short workshop + a pilot automation roadmap — no commitment.</p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                  <a href="mailto:hello@aishifthq.com" className="btn-primary inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">
-                    hello@aishifthq.com →
-                  </a>
+                  <a href="mailto:hello@aishifthq.com" className="btn-primary inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">hello@aishifthq.com →</a>
                 </div>
-
                 <p className="mt-6 text-sm text-muted">Based in Sydney — working with teams globally.</p>
               </div>
-
               <div className="rounded-2xl p-6" style={{ background: "rgba(180,255,57,0.04)", border: "1px solid rgba(180,255,57,0.12)" }}>
                 <div className="mono text-sm" style={{ color: "var(--a)" }}>What to expect</div>
                 <ul className="mt-4 space-y-3 text-sm text-muted">
