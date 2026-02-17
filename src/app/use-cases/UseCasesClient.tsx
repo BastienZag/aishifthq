@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import type { UseCase } from '@/lib/supabase';
 
 interface UseCasesClientProps {
@@ -198,9 +199,10 @@ export default function UseCasesClient({ useCases }: UseCasesClientProps) {
               const complexityColor = getComplexityColor(useCase.complexity);
 
               return (
-                <div
+                <Link
                   key={useCase.id}
-                  className="rounded-3xl p-6 transition-all hover:scale-[1.02] flex flex-col"
+                  href={`/use-cases/${useCase.id}/`}
+                  className="rounded-3xl p-6 transition-all hover:scale-[1.02] flex flex-col cursor-pointer"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, ${accentColor} 6%, transparent), transparent)`,
                     border: `1px solid color-mix(in srgb, ${accentColor} 15%, transparent)`,
@@ -277,7 +279,7 @@ export default function UseCasesClient({ useCases }: UseCasesClientProps) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
