@@ -5,84 +5,79 @@
   --panel: rgba(255, 255, 255, 0.06);
   --panel-2: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.10);
-
   --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.66);
-
-  --a: #B4FF39;   /* acid */
-  --b: #7C5CFF;   /* violet */
-  --c: #00D2FF;   /* cyan */
+  --muted: rgba(255, 255, 255, 0.56);
+  --a: #B4FF39;
+  --b: #7C5CFF;
+  --c: #00D2FF;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
-    "Segoe UI Emoji";
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-::selection {
-  background: rgba(180, 255, 57, 0.25);
-}
+::selection { background: rgba(180, 255, 57, 0.25); }
 
-/* ---------- bespoke primitives (avoid tailwind safelist headaches) ---------- */
-
+/* ---------- background ---------- */
 .bg-grid {
   background-image:
-    radial-gradient(800px 380px at 20% 0%, rgba(124, 92, 255, 0.25), transparent 60%),
-    radial-gradient(700px 420px at 90% 20%, rgba(0, 210, 255, 0.18), transparent 55%),
-    radial-gradient(900px 520px at 50% 120%, rgba(180, 255, 57, 0.14), transparent 55%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06), transparent 18%),
-    repeating-linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.06) 0,
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px,
-      transparent 64px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.04) 0,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 1px,
-      transparent 64px
-    );
+    radial-gradient(900px 460px at 15% 0%, rgba(124, 92, 255, 0.22), transparent 55%),
+    radial-gradient(800px 480px at 85% 10%, rgba(0, 210, 255, 0.16), transparent 50%),
+    radial-gradient(1000px 600px at 50% 130%, rgba(180, 255, 57, 0.10), transparent 50%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04), transparent 12%),
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.04) 0, rgba(255, 255, 255, 0.04) 1px, transparent 1px, transparent 72px),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 72px);
 }
 
 .bg-noise {
   position: relative;
 }
-
 .bg-noise::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.10;
+  opacity: 0.08;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 }
 
+/* ---------- panels ---------- */
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
   backdrop-filter: blur(18px);
 }
-
 .panel-soft {
   background: var(--panel-2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(18px);
 }
 
-.text-muted {
-  color: var(--muted);
+/* ---------- glow border ---------- */
+.glow-border {
+  position: relative;
+  overflow: hidden;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(180, 255, 57, 0.35), rgba(0, 210, 255, 0.25), rgba(124, 92, 255, 0.3));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
 }
 
+/* ---------- typography ---------- */
+.text-muted { color: var(--muted); }
 .text-gradient {
   background: linear-gradient(135deg, var(--a), var(--c), var(--b));
   -webkit-background-clip: text;
@@ -90,27 +85,78 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* ---------- buttons ---------- */
 .btn-primary {
   background: linear-gradient(135deg, rgba(180, 255, 57, 0.95), rgba(0, 210, 255, 0.85));
   color: rgba(0, 0, 0, 0.92);
-  box-shadow: 0 18px 60px rgba(180, 255, 57, 0.10), 0 18px 60px rgba(0, 210, 255, 0.08);
+  font-weight: 600;
+  box-shadow: 0 18px 60px rgba(180, 255, 57, 0.08), 0 18px 60px rgba(0, 210, 255, 0.06);
 }
-
+.btn-primary:hover {
+  box-shadow: 0 18px 60px rgba(180, 255, 57, 0.16), 0 18px 60px rgba(0, 210, 255, 0.12);
+}
 .btn-secondary {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+/* ---------- badges ---------- */
 .kbd {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
   font-size: 12px;
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.10);
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.72);
+}
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ---------- terminal ---------- */
+.terminal {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow: hidden;
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ---------- marquee ---------- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ---------- divider ---------- */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
 }
