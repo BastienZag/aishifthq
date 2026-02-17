@@ -3,8 +3,21 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Blog — AI Shift HQ",
-  description: "Practical guides on AI adoption, developer training, and workflow automation for teams.",
+  title: "AI Adoption Blog — Practical Guides on AI Training & Automation | AI Shift HQ",
+  description: "Practical guides on AI adoption, developer training, and workflow automation for teams. Learn how to implement Cursor, Claude Code, and OpenClaw agents in your organization.",
+  keywords: "AI adoption, AI training, workflow automation, developer productivity, AI agents, Cursor training, Claude Code, OpenClaw automation",
+  openGraph: {
+    title: "AI Adoption Blog — AI Shift HQ",
+    description: "Practical guides on AI training, workflow automation, and making adoption stick.",
+    type: "website",
+    url: "https://aishifthq.com/blog",
+    siteName: "AI Shift HQ",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Adoption Blog — AI Shift HQ",
+    description: "Practical guides on AI training and automation.",
+  },
 };
 
 export default function BlogPage() {
@@ -25,9 +38,11 @@ export default function BlogPage() {
           <div className="hidden md:flex items-center gap-7 text-sm">
             <Link href="/#services" className="text-muted hover:text-white transition-colors">Services</Link>
             <Link href="/#examples" className="text-muted hover:text-white transition-colors">Automations</Link>
+            <Link href="/use-cases" className="text-muted hover:text-white transition-colors">Use Cases</Link>
             <Link href="/#pricing" className="text-muted hover:text-white transition-colors">Pricing</Link>
+            <Link href="/#faq" className="text-muted hover:text-white transition-colors">FAQ</Link>
             <Link href="/blog" className="text-white">Blog</Link>
-            <a href="mailto:hello@aishifthq.com" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
+            <a href="/#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
           </div>
         </div>
       </nav>

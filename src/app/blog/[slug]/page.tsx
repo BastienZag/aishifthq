@@ -41,8 +41,67 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "author": {
+      "@type": "Organization",
+      "name": "AI Shift HQ"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Shift HQ",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aishifthq.com/images/logo.png"
+      }
+    },
+    "datePublished": post.date,
+    "url": `https://aishifthq.com/blog/${slug}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://aishifthq.com/blog/${slug}`
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aishifthq.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://aishifthq.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://aishifthq.com/blog/${slug}`
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-noise">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* ── Nav ── */}
       <nav className="fixed top-0 w-full z-50" style={{ background: "rgba(7,7,10,0.68)", backdropFilter: "blur(18px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -56,9 +115,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <div className="hidden md:flex items-center gap-7 text-sm">
             <Link href="/#services" className="text-muted hover:text-white transition-colors">Services</Link>
             <Link href="/#examples" className="text-muted hover:text-white transition-colors">Automations</Link>
+            <Link href="/use-cases" className="text-muted hover:text-white transition-colors">Use Cases</Link>
             <Link href="/#pricing" className="text-muted hover:text-white transition-colors">Pricing</Link>
+            <Link href="/#faq" className="text-muted hover:text-white transition-colors">FAQ</Link>
             <Link href="/blog" className="text-white">Blog</Link>
-            <a href="mailto:hello@aishifthq.com" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
+            <a href="/#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
           </div>
         </div>
       </nav>

@@ -44,8 +44,21 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!useCase) return { title: 'Use Case Not Found' };
 
   return {
-    title: `${useCase.title} | AI Shift HQ`,
+    title: `${useCase.title} — AI Automation Use Case | AI Shift HQ`,
     description: useCase.detailed_description || useCase.description,
+    keywords: `${useCase.title}, AI automation, OpenClaw, ${useCase.industry}, ${useCase.department}, workflow automation`,
+    openGraph: {
+      title: `${useCase.title} — OpenClaw Automation`,
+      description: useCase.description,
+      type: 'article',
+      url: `https://aishifthq.com/use-cases/${id}`,
+      siteName: 'AI Shift HQ',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${useCase.title} — OpenClaw Automation`,
+      description: useCase.description,
+    },
   };
 }
 
@@ -146,8 +159,65 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
     roi: useCase.roi_highlight || defaultImplementation(useCase).roi,
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aishifthq.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Use Cases",
+        "item": "https://aishifthq.com/use-cases"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": useCase.title,
+        "item": `https://aishifthq.com/use-cases/${id}`
+      }
+    ]
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": useCase.title,
+    "description": useCase.description,
+    "applicationCategory": "AI Automation",
+    "keywords": `${useCase.industry}, ${useCase.department}, AI automation, OpenClaw`,
+    "author": {
+      "@type": "Organization",
+      "name": "AI Shift HQ"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Shift HQ",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aishifthq.com/images/logo.png"
+      }
+    },
+    "datePublished": useCase.created_at,
+    "url": `https://aishifthq.com/use-cases/${id}`
+  };
+
   return (
     <div className="min-h-screen bg-noise">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* ── Nav ── */}
       <nav className="fixed top-0 w-full z-50" style={{ background: "rgba(7,7,10,0.68)", backdropFilter: "blur(18px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

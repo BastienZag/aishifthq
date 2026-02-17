@@ -3,8 +3,21 @@ import type { UseCase } from '@/lib/supabase';
 import UseCasesClient from './UseCasesClient';
 
 export const metadata = {
-  title: 'AI Automation Use Cases | AI Shift HQ',
-  description: 'Explore real-world AI automation use cases across industries and departments. Filter by business type, department, and complexity.',
+  title: 'AI Automation Use Cases — Real-World OpenClaw Examples | AI Shift HQ',
+  description: 'Explore 50+ real-world AI automation use cases powered by OpenClaw. Discover how teams across industries use AI agents to automate workflows, from simple routing to complex multi-step processes.',
+  keywords: 'AI automation use cases, OpenClaw automation examples, workflow automation, AI agents, automation examples, real-world AI use cases, OpenClaw use cases',
+  openGraph: {
+    title: 'AI Automation Use Cases — OpenClaw Examples',
+    description: '50+ real-world AI automation use cases across industries.',
+    type: 'website',
+    url: 'https://aishifthq.com/use-cases',
+    siteName: 'AI Shift HQ',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Automation Use Cases — OpenClaw Examples',
+    description: '50+ real-world AI automation use cases across industries.',
+  },
 };
 
 async function getUseCases(): Promise<UseCase[]> {

@@ -1,0 +1,6 @@
+# robots.txt for aishifthq.com
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://aishifthq.com/sitemap.xml

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aishifthq.com"),
   title: "AI Shift HQ — Make AI adoption real",
   description:
     "Hands-on AI training + workflow automation for teams. Cursor & Claude Code workshops, and OpenClaw agents that remove repetitive work.",
@@ -14,7 +15,15 @@ export const metadata: Metadata = {
     "AI workflow automation",
     "developer enablement",
     "AI change management",
+    "AI automation use cases",
+    "OpenClaw automation examples",
   ],
+  authors: [{ name: "AI Shift HQ" }],
+  creator: "AI Shift HQ",
+  publisher: "AI Shift HQ",
+  alternates: {
+    canonical: "https://aishifthq.com",
+  },
   openGraph: {
     title: "AI Shift HQ — Make AI adoption real",
     description:
@@ -22,10 +31,27 @@ export const metadata: Metadata = {
     url: "https://aishifthq.com",
     siteName: "AI Shift HQ",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Shift HQ — Make AI adoption real",
+    description: "Hands-on AI training + workflow automation for teams.",
   },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

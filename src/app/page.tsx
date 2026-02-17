@@ -87,11 +87,78 @@ function SectionLabel({ text, color }: { text: string; color?: string }) {
   return <div className="mono text-sm tracking-wide" style={{ color: color || "var(--muted)" }}>{text}</div>;
 }
 
+/* ── metadata ── */
+
+export const metadata = {
+  title: "AI Shift HQ — AI Training & Workflow Automation for Teams",
+  description: "Hands-on AI developer training and workflow automation. We help teams adopt Cursor, Claude Code, and OpenClaw agents — from workshop to shipped automations in 2-4 weeks.",
+  keywords: "AI training, AI automation, OpenClaw, workflow automation, AI adoption, developer training, AI agents, Cursor training, Claude Code",
+  openGraph: {
+    title: "AI Shift HQ — AI Training & Workflow Automation",
+    description: "Hands-on AI training and shipped automations. Workshop + pilot in 2-4 weeks.",
+    type: "website",
+    url: "https://aishifthq.com",
+    siteName: "AI Shift HQ",
+    images: [
+      {
+        url: "https://aishifthq.com/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AI Shift HQ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Shift HQ — AI Training & Workflow Automation",
+    description: "Hands-on AI training and shipped automations. Workshop + pilot in 2-4 weeks.",
+    images: ["https://aishifthq.com/images/og-image.png"],
+  },
+};
+
 /* ── page ── */
 
 export default function Home() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AI Shift HQ",
+    "url": "https://aishifthq.com",
+    "logo": "https://aishifthq.com/images/logo.png",
+    "description": "AI training and workflow automation for teams",
+    "email": "hello@aishifthq.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressCountry": "AU"
+    },
+    "sameAs": []
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-noise">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* ── Nav ── */}
       <nav className="fixed top-0 w-full z-50" style={{ background: "rgba(7,7,10,0.68)", backdropFilter: "blur(18px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
