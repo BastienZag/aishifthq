@@ -105,6 +105,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-7 text-sm">
             <a href="#services" className="text-muted hover:text-white transition-colors">Services</a>
             <a href="#examples" className="text-muted hover:text-white transition-colors">Automations</a>
+            <a href="/use-cases" className="text-muted hover:text-white transition-colors">Use Cases</a>
             <a href="#pricing" className="text-muted hover:text-white transition-colors">Pricing</a>
             <a href="#faq" className="text-muted hover:text-white transition-colors">FAQ</a>
             <a href="/blog" className="text-muted hover:text-white transition-colors">Blog</a>

@@ -1,0 +1,106 @@
+import { supabase } from '@/lib/supabase';
+import type { UseCase } from '@/lib/supabase';
+import UseCasesClient from './UseCasesClient';
+
+export const metadata = {
+  title: 'AI Automation Use Cases | AI Shift HQ',
+  description: 'Explore real-world AI automation use cases across industries and departments. Filter by business type, department, and complexity.',
+};
+
+async function getUseCases(): Promise<UseCase[]> {
+  const { data, error } = await supabase
+    .from('use_cases')
+    .select('*')
+    .eq('published', true)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching use cases:', error);
+    return [];
+  }
+
+  return data || [];
+}
+
+export default async function UseCasesPage() {
+  const useCases = await getUseCases();
+
+  return (
+    <div className="min-h-screen bg-noise">
+      {/* ── Nav ── */}
+      <nav className="fixed top-0 w-full z-50" style={{ background: "rgba(7,7,10,0.68)", backdropFilter: "blur(18px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-3">
+            <div className="leading-tight">
+              <div className="text-[15px] font-semibold">AI Shift HQ</div>
+              <div className="text-[11px] tracking-wide uppercase" style={{ color: "var(--c)" }}>Use Cases</div>
+            </div>
+          </a>
+          <div className="hidden md:flex items-center gap-7 text-sm">
+            <a href="/#services" className="text-muted hover:text-white transition-colors">Services</a>
+            <a href="/#examples" className="text-muted hover:text-white transition-colors">Automations</a>
+            <a href="/use-cases" className="text-white">Use Cases</a>
+            <a href="/#pricing" className="text-muted hover:text-white transition-colors">Pricing</a>
+            <a href="/#faq" className="text-muted hover:text-white transition-colors">FAQ</a>
+            <a href="/blog" className="text-muted hover:text-white transition-colors">Blog</a>
+            <a href="/#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* ── Hero ── */}
+      <section className="relative pt-28 md:pt-36 pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-grid" />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="mono text-sm tracking-wide" style={{ color: "var(--a)" }}>use cases</div>
+          <h1 className="mt-3 text-5xl md:text-[4rem] font-semibold leading-[0.95] tracking-tight">
+            Real-world AI<br />
+            <span className="text-gradient">automation</span> examples.
+          </h1>
+          <p className="mt-6 text-lg md:text-xl text-muted max-w-3xl leading-relaxed">
+            Explore how teams across industries use AI agents to automate repetitive work, route information, and keep operations flowing — without replacing people.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm text-muted">
+            <span><span style={{ color: "var(--c)" }}>{useCases.length}</span> use cases</span>
+            <span>•</span>
+            <span><span style={{ color: "var(--b)" }}>7</span> industries</span>
+            <span>•</span>
+            <span><span style={{ color: "var(--a)" }}>8</span> departments</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Use Cases Grid (Client Component) ── */}
+      <UseCasesClient useCases={useCases} />
+
+      {/* ── CTA ── */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="glow-border rounded-[28px] p-10 md:p-14" style={{ background: "linear-gradient(135deg, rgba(180,255,57,0.05), rgba(0,210,255,0.03), rgba(124,92,255,0.04))" }}>
+            <div className="relative z-10 text-center max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">Ready to automate your workflows?</h2>
+              <p className="mt-5 text-lg text-muted leading-relaxed">
+                We can build these automations for your team in 2–4 weeks. Book a free discovery call to map your workflow and get a pilot plan.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/#contact" className="btn-primary inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">Book a free 30‑min discovery →</a>
+                <a href="/" className="btn-secondary inline-flex items-center justify-center px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">← Back to home</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Footer ── */}
+      <footer className="py-10" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-muted">© {new Date().getFullYear()} AI Shift HQ</div>
+          <div className="flex items-center gap-6 text-sm">
+            <a href="mailto:hello@aishifthq.com" className="text-muted hover:text-white transition-colors">Contact</a>
+            <a href="/" className="text-muted hover:text-white transition-colors">Home</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
