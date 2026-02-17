@@ -176,17 +176,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Integrations strip ── */}
+      {/* ── Integrations marquee ── */}
       <div className="py-8 overflow-hidden" style={{ borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {integrations.map((int) => (
-              <div key={int.name} className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-                <int.Logo size={20} />
-                <span className="text-sm text-muted">{int.name}</span>
-              </div>
-            ))}
-          </div>
+        <div className="marquee-track">
+          {[...integrations, ...integrations].map((int, i) => (
+            <span key={i} className="flex-shrink-0 px-8 flex items-center gap-2 whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
+              <int.Logo size={18} />
+              <span className="text-sm text-muted">{int.name}</span>
+            </span>
+          ))}
         </div>
       </div>
 
