@@ -107,6 +107,7 @@ export default function Home() {
             <a href="#examples" className="text-muted hover:text-white transition-colors">Automations</a>
             <a href="#pricing" className="text-muted hover:text-white transition-colors">Pricing</a>
             <a href="#faq" className="text-muted hover:text-white transition-colors">FAQ</a>
+            <a href="/blog" className="text-muted hover:text-white transition-colors">Blog</a>
             <a href="#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
           </div>
         </div>
