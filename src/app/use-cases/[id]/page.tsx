@@ -164,7 +164,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
             <a href="/#pricing" className="text-muted hover:text-white transition-colors">Pricing</a>
             <a href="/#faq" className="text-muted hover:text-white transition-colors">FAQ</a>
             <a href="/blog" className="text-muted hover:text-white transition-colors">Blog</a>
-            <a href="/#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
+            <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Get OpenClaw</a>
           </div>
         </div>
       </nav>
@@ -258,7 +258,22 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                   border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                <h2 className="text-xl font-semibold mb-6">Workflow</h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-semibold">Workflow</h2>
+                  <a 
+                    href="https://openclaw.ai" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 rounded-full transition-all hover:scale-105"
+                    style={{
+                      background: `color-mix(in srgb, ${accentColor} 12%, transparent)`,
+                      border: `1px solid color-mix(in srgb, ${accentColor} 25%, transparent)`,
+                      color: "rgba(255,255,255,0.8)",
+                    }}
+                  >
+                    Powered by OpenClaw
+                  </a>
+                </div>
                 <div className="space-y-4">
                   {workflow.map((s: any) => (
                     <div key={s.step} className="flex gap-4">
@@ -278,6 +293,11 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                       </div>
                     </div>
                   ))}
+                </div>
+                <div className="mt-6 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p className="text-sm text-muted leading-relaxed">
+                    <strong className="text-white">OpenClaw</strong> orchestrates this entire workflow using its built-in integrations (Slack, email, browser, database, APIs) and executes everything end-to-end without manual intervention.
+                  </p>
                 </div>
               </div>
 
@@ -417,14 +437,26 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                   border: `1px solid color-mix(in srgb, ${accentColor} 18%, transparent)`,
                 }}
               >
-                <h3 className="font-semibold mb-2">Want this automation?</h3>
-                <p className="text-sm text-muted mb-4">Typical implementation: <span className="text-white">{impl.time}</span>.</p>
-                <a
-                  href="/#contact"
-                  className="btn-primary inline-flex items-center justify-center w-full px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-[1.03]"
-                >
-                  Book a call →
-                </a>
+                <h3 className="font-semibold mb-2">Build this with OpenClaw</h3>
+                <p className="text-sm text-muted mb-4">Open-source AI agent platform. Run agents locally with full control.</p>
+                <div className="space-y-2">
+                  <a
+                    href="https://github.com/openclaw/openclaw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center justify-center w-full px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-[1.03]"
+                  >
+                    Get started →
+                  </a>
+                  <a
+                    href="https://openclaw.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary inline-flex items-center justify-center w-full px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-[1.03]"
+                  >
+                    Learn more
+                  </a>
+                </div>
               </div>
             </div>
           </div>
