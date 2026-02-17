@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Shift HQ — Accelerate Your AI Transformation",
+  title: "AI Shift HQ — Make AI adoption real",
   description:
-    "We help teams adopt AI through hands-on training and workflow automation. From developer tools like Cursor & Claude Code to enterprise AI agents with OpenClaw.",
+    "Hands-on AI training + workflow automation for teams. Cursor & Claude Code workshops, and OpenClaw agents that remove repetitive work.",
   keywords: [
     "AI training",
     "Cursor training",
     "Claude Code",
     "OpenClaw",
     "AI adoption",
+    "AI workflow automation",
+    "developer enablement",
     "AI change management",
-    "developer AI tools",
-    "enterprise AI",
   ],
   openGraph: {
-    title: "AI Shift HQ — Accelerate Your AI Transformation",
+    title: "AI Shift HQ — Make AI adoption real",
     description:
-      "Hands-on AI training and automation for teams ready to level up.",
+      "Hands-on AI training + workflow automation for teams. Practical workshops, real outcomes.",
     url: "https://aishifthq.com",
     siteName: "AI Shift HQ",
     type: "website",
@@ -37,8 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>
