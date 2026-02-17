@@ -156,6 +156,159 @@ body {
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
 }
 
+/* ---------- example output mocks ---------- */
+.example-output-container .mock-output {
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.mock-output.report .header,
+.mock-output.ticket .ticket-header,
+.mock-output.generic .output-header {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mock-output.report .header h4,
+.mock-output.ticket .ticket-header .ticket-id,
+.mock-output.generic .output-header h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 4px;
+}
+
+.mock-output .meta,
+.mock-output .timestamp {
+  font-size: 11px;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.mock-output .section,
+.mock-output .ticket-body,
+.mock-output .output-body {
+  margin-bottom: 20px;
+}
+
+.mock-output .section h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--a);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mock-output .section p,
+.mock-output .ticket-body .field,
+.mock-output .field-group {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.mock-output .section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mock-output .section ul li {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  padding: 6px 0;
+}
+
+.mock-output .section ul li strong,
+.mock-output .ticket-body .field strong {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+}
+
+.mock-output.ticket .ticket-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(180, 255, 57, 0.15);
+  color: var(--a);
+  border: 1px solid rgba(180, 255, 57, 0.25);
+}
+
+.mock-output.notification {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+}
+
+.mock-output.notification .notif-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.mock-output.notification .notif-content h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 8px;
+}
+
+.mock-output.notification .notif-content p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.mock-output.notification .notif-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.mock-output.notification .notif-actions button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mock-output.notification .btn-primary {
+  background: rgba(180, 255, 57, 0.95);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.mock-output.notification .btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mock-output .field-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mock-output .field-group .value {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.92);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marquee-track { animation: none; }

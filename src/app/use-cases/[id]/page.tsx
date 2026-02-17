@@ -3,6 +3,16 @@ import type { UseCase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import {
+  generateWorkflowSteps,
+  generateBenefits,
+  generateBeforeAfter,
+  generateWhoItsFor,
+  generatePrerequisites,
+  generateFAQ,
+  generateExampleOutput,
+  generateKeyMetrics
+} from '@/lib/useCaseDefaults';
 
 async function getUseCase(id: string): Promise<any | null> {
   const { data, error } = await supabase
@@ -79,69 +89,6 @@ function getIcon(icon: string): string {
   return icons[icon] || '⚡';
 }
 
-function defaultWorkflowSteps(useCase: UseCase) {
-  const tools = (useCase.tools || []).slice(0, 3);
-  return [
-    {
-      step: 1,
-      title: 'Trigger',
-      description: `A request comes in (form, email, system event) and gets captured automatically${tools.length ? ` via ${tools[0]}` : ''}.`,
-    },
-    {
-      step: 2,
-      title: 'Understand',
-      description: 'AI extracts the important fields, applies rules, and adds context from your systems.',
-    },
-    {
-      step: 3,
-      title: 'Act',
-      description: `Updates the right tools${tools.length ? ` (${tools.join(', ')})` : ''}, routes work to the right person, and generates a draft if needed.`,
-    },
-    {
-      step: 4,
-      title: 'Track',
-      description: 'Logs outcomes, sends status updates, and creates an audit trail for reporting.',
-    },
-  ];
-}
-
-function defaultBenefits(useCase: UseCase) {
-  return [
-    `Save ${useCase.time_saved} on repetitive ${useCase.department.toLowerCase()} work`,
-    'Fewer handoffs and less context-switching',
-    'More consistent outcomes (same rules every time)',
-    'Clear visibility: logs, status updates, and ownership',
-    'Humans stay in control with approvals where needed',
-  ];
-}
-
-function defaultBeforeAfter(useCase: UseCase) {
-  return {
-    before: [
-      'Requests scattered across inboxes and spreadsheets',
-      'Manual copy/paste between tools',
-      'Slow follow-ups and unclear ownership',
-      'Errors from repetitive steps',
-    ],
-    after: [
-      'One consistent workflow from intake to completion',
-      'Automatic routing + draft generation',
-      'Fast turnaround with clear status',
-      `Measured impact (≈ ${useCase.time_saved} saved)`,
-    ],
-  };
-}
-
-function defaultImplementation(useCase: UseCase) {
-  const t = useCase.complexity === 'Simple' ? '1–2 weeks' : useCase.complexity === 'Moderate' ? '2–4 weeks' : '4–6 weeks';
-  const roi = useCase.complexity === 'Simple'
-    ? 'Quick win: improves speed and consistency immediately'
-    : useCase.complexity === 'Moderate'
-      ? 'Strong ROI: removes recurring manual work and reduces errors'
-      : 'High leverage: combines multiple systems + approvals for real impact';
-  return { time: t, roi };
-}
-
 export default async function UseCaseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const useCase = await getUseCase(id);
@@ -151,13 +98,17 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
   const complexityColor = getComplexityColor(useCase.complexity);
   const related = await getRelatedUseCases(useCase);
 
-  const workflow = useCase.workflow_steps && Array.isArray(useCase.workflow_steps) ? useCase.workflow_steps : defaultWorkflowSteps(useCase);
-  const benefits: string[] = useCase.benefits && Array.isArray(useCase.benefits) ? useCase.benefits : defaultBenefits(useCase);
-  const beforeAfter = useCase.before_after && typeof useCase.before_after === 'object' ? useCase.before_after : defaultBeforeAfter(useCase);
-  const impl = {
-    time: useCase.implementation_time || defaultImplementation(useCase).time,
-    roi: useCase.roi_highlight || defaultImplementation(useCase).roi,
-  };
+  // Use smart, contextual defaults that adapt to each use case
+  const workflow = useCase.workflow_steps || generateWorkflowSteps(useCase);
+  const benefits = useCase.benefits || generateBenefits(useCase);
+  const beforeAfter = useCase.before_after || generateBeforeAfter(useCase);
+  const whoItsFor = useCase.who_its_for || generateWhoItsFor(useCase);
+  const prerequisites = useCase.prerequisites || generatePrerequisites(useCase);
+  const faq = useCase.faq || generateFAQ(useCase);
+  const exampleOutput = useCase.example_output || generateExampleOutput(useCase);
+  const keyMetrics = useCase.key_metrics || generateKeyMetrics(useCase);
+  
+  const implementationTime = useCase.complexity === 'Simple' ? '1–2 weeks' : useCase.complexity === 'Moderate' ? '2–4 weeks' : '4–6 weeks';
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -308,7 +259,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="md:col-span-2 space-y-8">
-              {/* ROI highlight */}
+              {/* Key Metrics */}
               <div
                 className="rounded-3xl p-8"
                 style={{
@@ -316,8 +267,15 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                   border: `1px solid color-mix(in srgb, ${accentColor} 18%, transparent)`,
                 }}
               >
-                <div className="mono text-xs text-muted mb-2">IMPACT</div>
-                <div className="text-2xl font-semibold leading-tight">{impl.roi}</div>
+                <div className="mono text-xs text-muted mb-4">KEY METRICS</div>
+                <div className="grid grid-cols-2 gap-4">
+                  {Object.entries(keyMetrics).map(([key, value]) => (
+                    <div key={key}>
+                      <div className="text-sm text-muted mb-1">{key}</div>
+                      <div className="text-2xl font-semibold">{String(value)}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Workflow */}
@@ -400,6 +358,24 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                 </div>
               </div>
 
+              {/* Example Output */}
+              <div
+                className="rounded-3xl p-8"
+                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <h2 className="text-xl font-semibold mb-5">Example Output</h2>
+                <div 
+                  className="example-output-container"
+                  dangerouslySetInnerHTML={{ __html: exampleOutput }}
+                  style={{
+                    background: "rgba(255,255,255,0.02)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    borderRadius: "16px",
+                    padding: "24px",
+                  }}
+                />
+              </div>
+
               {/* Benefits */}
               <div
                 className="rounded-3xl p-8"
@@ -418,6 +394,53 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                       }}
                     >
                       {b}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Who It's For */}
+              <div
+                className="rounded-3xl p-8"
+                style={{
+                  background: `linear-gradient(135deg, color-mix(in srgb, ${accentColor} 6%, transparent), transparent)`,
+                  border: `1px solid color-mix(in srgb, ${accentColor} 12%, transparent)`,
+                }}
+              >
+                <h2 className="text-xl font-semibold mb-4">Who it's for</h2>
+                <p className="text-muted leading-relaxed">{whoItsFor}</p>
+              </div>
+
+              {/* Prerequisites */}
+              <div
+                className="rounded-3xl p-8"
+                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <h2 className="text-xl font-semibold mb-5">What you need</h2>
+                <ul className="space-y-3">
+                  {prerequisites.map((prereq: string, i: number) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-muted">
+                      <span className="mt-1 flex-shrink-0" style={{ color: accentColor }}>✓</span>
+                      <span>{prereq}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* FAQ */}
+              <div
+                className="rounded-3xl p-8"
+                style={{
+                  background: `linear-gradient(135deg, color-mix(in srgb, ${accentColor} 6%, transparent), transparent)`,
+                  border: `1px solid color-mix(in srgb, ${accentColor} 12%, transparent)`,
+                }}
+              >
+                <h2 className="text-xl font-semibold mb-6">Frequently Asked Questions</h2>
+                <div className="space-y-6">
+                  {faq.map((item: {question: string, answer: string}, i: number) => (
+                    <div key={i}>
+                      <div className="font-semibold mb-2">{item.question}</div>
+                      <div className="text-sm text-muted leading-relaxed">{item.answer}</div>
                     </div>
                   ))}
                 </div>
@@ -483,6 +506,10 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                     <div className="text-lg font-semibold" style={{ color: accentColor }}>
                       ⏱️ {useCase.time_saved}
                     </div>
+                  </div>
+                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }} className="pt-4">
+                    <div className="text-xs text-muted mb-1">Implementation time</div>
+                    <div className="text-lg font-semibold">{implementationTime}</div>
                   </div>
                   <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }} className="pt-4">
                     <div className="text-xs text-muted mb-1">Complexity</div>

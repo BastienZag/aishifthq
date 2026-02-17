@@ -19,4 +19,25 @@ export interface UseCase {
   accent_color: 'a' | 'b' | 'c';
   created_at: string;
   published: boolean;
+  // Rich content fields (optional)
+  workflow_steps?: Array<{
+    step: number;
+    title: string;
+    description: string;
+  }>;
+  benefits?: string[];
+  before_after?: {
+    before: string[];
+    after: string[];
+  };
+  who_its_for?: string;
+  prerequisites?: string[];
+  faq?: Array<{
+    question: string;
+    answer: string;
+  }>;
+  example_output?: string;
+  key_metrics?: {
+    [key: string]: string;
+  };
 }
