@@ -77,7 +77,7 @@ const integrations = [
 
 function Chip({ text, color }: { text: string; color?: string }) {
   return (
-    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs" style={{ background: color ? `color-mix(in srgb, ${color} 12%, transparent)` : "rgba(255,255,255,0.06)", border: `1px solid ${color ? `color-mix(in srgb, ${color} 25%, transparent)` : "rgba(255,255,255,0.10)"}`, color: color || "rgba(255,255,255,0.72)" }}>
+    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs" style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${color ? `color-mix(in srgb, ${color} 15%, transparent)` : "rgba(255,255,255,0.08)"}`, color: "rgba(255,255,255,0.6)" }}>
       {text}
     </span>
   );
@@ -210,7 +210,7 @@ export default function Home() {
             <div>
               <SectionLabel text="services" color="var(--c)" />
               <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
-                Two levers: <span style={{ color: "var(--a)" }}>people</span>&nbsp;+&nbsp;<span style={{ color: "var(--c)" }}>systems</span>.
+                Two levers: people&nbsp;+&nbsp;systems.
               </h2>
               <p className="mt-5 text-lg text-muted leading-relaxed max-w-xl">
                 Training builds confidence. Automations remove friction. Together they turn AI from an experiment into a dependable operating layer.
@@ -238,7 +238,7 @@ export default function Home() {
                 {["Prompting for codebase context", "AI-assisted debugging", "Refactors & migrations", "PR review workflows"].map((t) => <Chip key={t} text={t} color="var(--a)" />)}
               </div>
               <div className="mt-8 rounded-2xl p-5" style={{ background: "rgba(180,255,57,0.04)", border: "1px solid rgba(180,255,57,0.10)" }}>
-                <div className="mono text-sm" style={{ color: "var(--a)" }}>Deliverables</div>
+                <div className="mono text-sm" style={{ color: "rgba(180,255,57,0.7)" }}>Deliverables</div>
                 <ul className="mt-3 space-y-2 text-sm text-muted">
                   <li><span style={{ color: "var(--a)" }}>•</span> Team playbook (do/don&apos;t patterns)</li>
                   <li><span style={{ color: "var(--a)" }}>•</span> Repo-specific prompt library</li>
@@ -263,7 +263,7 @@ export default function Home() {
                 {["Slack agents", "Email triage", "Notion ops", "Jira automation", "Executive summaries"].map((t) => <Chip key={t} text={t} color="var(--c)" />)}
               </div>
               <div className="mt-8 rounded-2xl p-5" style={{ background: "rgba(0,210,255,0.04)", border: "1px solid rgba(0,210,255,0.10)" }}>
-                <div className="mono text-sm" style={{ color: "var(--c)" }}>Deliverables</div>
+                <div className="mono text-sm" style={{ color: "rgba(0,210,255,0.7)" }}>Deliverables</div>
                 <ul className="mt-3 space-y-2 text-sm text-muted">
                   <li><span style={{ color: "var(--c)" }}>•</span> 1–3 shipped automations</li>
                   <li><span style={{ color: "var(--c)" }}>•</span> Runbooks + handover</li>
@@ -281,7 +281,7 @@ export default function Home() {
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: `color-mix(in srgb, ${f.color} 10%, transparent)`, border: `1px solid color-mix(in srgb, ${f.color} 18%, transparent)` }}>
                     <f.Icon size={20} color={f.color === "var(--a)" ? "#B4FF39" : f.color === "var(--c)" ? "#00D2FF" : "#7C5CFF"} />
                   </div>
-                  <span className="mono text-xs px-3 py-1 rounded-full" style={{ background: `color-mix(in srgb, ${f.color} 10%, transparent)`, border: `1px solid color-mix(in srgb, ${f.color} 20%, transparent)`, color: f.color }}>{f.tag}</span>
+                  <span className="mono text-xs px-3 py-1 rounded-full" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid color-mix(in srgb, ${f.color} 12%, transparent)`, color: "rgba(255,255,255,0.5)" }}>{f.tag}</span>
                 </div>
                 <div className="text-lg font-semibold">{f.title}</div>
                 <p className="text-sm text-muted mt-2 leading-relaxed">{f.desc}</p>
@@ -329,16 +329,16 @@ export default function Home() {
               <div className="rounded-2xl p-6 md:col-span-2" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
                 <div className="flex flex-wrap gap-3">
                   {[
-                    { t: "Cursor", c: "var(--a)", L: LogoCursor },
-                    { t: "Claude Code", c: "var(--a)", L: LogoClaude },
-                    { t: "OpenClaw", c: "var(--c)", L: LogoOpenClaw },
-                    { t: "Slack", c: "var(--b)", L: LogoSlack },
-                    { t: "Notion", c: "var(--c)", L: LogoNotion },
-                    { t: "Jira", c: "var(--c)", L: LogoJira },
-                    { t: "GitHub", c: "var(--a)", L: LogoGitHub },
-                    { t: "Google / Microsoft", c: "var(--b)", L: LogoGoogle },
+                    { t: "Cursor", L: LogoCursor },
+                    { t: "Claude Code", L: LogoClaude },
+                    { t: "OpenClaw", L: LogoOpenClaw },
+                    { t: "Slack", L: LogoSlack },
+                    { t: "Notion", L: LogoNotion },
+                    { t: "Jira", L: LogoJira },
+                    { t: "GitHub", L: LogoGitHub },
+                    { t: "Google / Microsoft", L: LogoGoogle },
                   ].map((item) => (
-                    <span key={item.t} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs" style={{ background: `color-mix(in srgb, ${item.c} 8%, transparent)`, border: `1px solid color-mix(in srgb, ${item.c} 18%, transparent)`, color: item.c }}>
+                    <span key={item.t} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.10)", color: "rgba(255,255,255,0.6)" }}>
                       <item.L size={14} />
                       {item.t}
                     </span>
