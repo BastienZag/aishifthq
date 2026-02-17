@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-async function getUseCase(id: string): Promise<UseCase | null> {
+async function getUseCase(id: string): Promise<any | null> {
   const { data, error } = await supabase
     .from('use_cases')
     .select('*')
@@ -17,6 +17,7 @@ async function getUseCase(id: string): Promise<UseCase | null> {
 }
 
 async function getRelatedUseCases(useCase: UseCase): Promise<UseCase[]> {
+  // NOTE: Keep related cards lightweight (title/desc)
   const { data } = await supabase
     .from('use_cases')
     .select('*')
@@ -65,6 +66,69 @@ function getIcon(icon: string): string {
   return icons[icon] || '⚡';
 }
 
+function defaultWorkflowSteps(useCase: UseCase) {
+  const tools = (useCase.tools || []).slice(0, 3);
+  return [
+    {
+      step: 1,
+      title: 'Trigger',
+      description: `A request comes in (form, email, system event) and gets captured automatically${tools.length ? ` via ${tools[0]}` : ''}.`,
+    },
+    {
+      step: 2,
+      title: 'Understand',
+      description: 'AI extracts the important fields, applies rules, and adds context from your systems.',
+    },
+    {
+      step: 3,
+      title: 'Act',
+      description: `Updates the right tools${tools.length ? ` (${tools.join(', ')})` : ''}, routes work to the right person, and generates a draft if needed.`,
+    },
+    {
+      step: 4,
+      title: 'Track',
+      description: 'Logs outcomes, sends status updates, and creates an audit trail for reporting.',
+    },
+  ];
+}
+
+function defaultBenefits(useCase: UseCase) {
+  return [
+    `Save ${useCase.time_saved} on repetitive ${useCase.department.toLowerCase()} work`,
+    'Fewer handoffs and less context-switching',
+    'More consistent outcomes (same rules every time)',
+    'Clear visibility: logs, status updates, and ownership',
+    'Humans stay in control with approvals where needed',
+  ];
+}
+
+function defaultBeforeAfter(useCase: UseCase) {
+  return {
+    before: [
+      'Requests scattered across inboxes and spreadsheets',
+      'Manual copy/paste between tools',
+      'Slow follow-ups and unclear ownership',
+      'Errors from repetitive steps',
+    ],
+    after: [
+      'One consistent workflow from intake to completion',
+      'Automatic routing + draft generation',
+      'Fast turnaround with clear status',
+      `Measured impact (≈ ${useCase.time_saved} saved)`,
+    ],
+  };
+}
+
+function defaultImplementation(useCase: UseCase) {
+  const t = useCase.complexity === 'Simple' ? '1–2 weeks' : useCase.complexity === 'Moderate' ? '2–4 weeks' : '4–6 weeks';
+  const roi = useCase.complexity === 'Simple'
+    ? 'Quick win: improves speed and consistency immediately'
+    : useCase.complexity === 'Moderate'
+      ? 'Strong ROI: removes recurring manual work and reduces errors'
+      : 'High leverage: combines multiple systems + approvals for real impact';
+  return { time: t, roi };
+}
+
 export default async function UseCaseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const useCase = await getUseCase(id);
@@ -73,6 +137,14 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
   const accentColor = getAccentColor(useCase.accent_color);
   const complexityColor = getComplexityColor(useCase.complexity);
   const related = await getRelatedUseCases(useCase);
+
+  const workflow = useCase.workflow_steps && Array.isArray(useCase.workflow_steps) ? useCase.workflow_steps : defaultWorkflowSteps(useCase);
+  const benefits: string[] = useCase.benefits && Array.isArray(useCase.benefits) ? useCase.benefits : defaultBenefits(useCase);
+  const beforeAfter = useCase.before_after && typeof useCase.before_after === 'object' ? useCase.before_after : defaultBeforeAfter(useCase);
+  const impl = {
+    time: useCase.implementation_time || defaultImplementation(useCase).time,
+    roi: useCase.roi_highlight || defaultImplementation(useCase).roi,
+  };
 
   return (
     <div className="min-h-screen bg-noise">
@@ -166,7 +238,102 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="md:col-span-2 space-y-8">
-              {/* Detailed Description */}
+              {/* ROI highlight */}
+              <div
+                className="rounded-3xl p-8"
+                style={{
+                  background: `linear-gradient(135deg, color-mix(in srgb, ${accentColor} 10%, transparent), transparent)`,
+                  border: `1px solid color-mix(in srgb, ${accentColor} 18%, transparent)`,
+                }}
+              >
+                <div className="mono text-xs text-muted mb-2">IMPACT</div>
+                <div className="text-2xl font-semibold leading-tight">{impl.roi}</div>
+              </div>
+
+              {/* Workflow */}
+              <div
+                className="rounded-3xl p-8"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <h2 className="text-xl font-semibold mb-6">Workflow</h2>
+                <div className="space-y-4">
+                  {workflow.map((s: any) => (
+                    <div key={s.step} className="flex gap-4">
+                      <div
+                        className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-semibold flex-shrink-0"
+                        style={{
+                          background: `color-mix(in srgb, ${accentColor} 10%, transparent)`,
+                          border: `1px solid color-mix(in srgb, ${accentColor} 18%, transparent)`,
+                          color: "rgba(255,255,255,0.9)",
+                        }}
+                      >
+                        {s.step}
+                      </div>
+                      <div>
+                        <div className="font-semibold">{s.title}</div>
+                        <div className="text-sm text-muted leading-relaxed">{s.description}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Before / After */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div
+                  className="rounded-3xl p-8"
+                  style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <div className="mono text-xs text-muted mb-3">BEFORE</div>
+                  <ul className="space-y-2 text-sm text-muted">
+                    {(beforeAfter.before || []).slice(0, 5).map((t: string, i: number) => (
+                      <li key={i}>• {t}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div
+                  className="rounded-3xl p-8"
+                  style={{
+                    background: `linear-gradient(135deg, color-mix(in srgb, ${accentColor} 6%, transparent), transparent)`,
+                    border: `1px solid color-mix(in srgb, ${accentColor} 14%, transparent)`,
+                  }}
+                >
+                  <div className="mono text-xs text-muted mb-3">AFTER</div>
+                  <ul className="space-y-2 text-sm text-muted">
+                    {(beforeAfter.after || []).slice(0, 5).map((t: string, i: number) => (
+                      <li key={i}>• {t}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Benefits */}
+              <div
+                className="rounded-3xl p-8"
+                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <h2 className="text-xl font-semibold mb-5">What you get</h2>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {benefits.slice(0, 6).map((b: string, i: number) => (
+                    <div
+                      key={i}
+                      className="rounded-2xl p-4 text-sm"
+                      style={{
+                        background: `color-mix(in srgb, ${accentColor} 6%, transparent)`,
+                        border: `1px solid color-mix(in srgb, ${accentColor} 12%, transparent)`,
+                        color: "rgba(255,255,255,0.82)",
+                      }}
+                    >
+                      {b}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Detailed Description (optional) */}
               {useCase.detailed_description && (
                 <div
                   className="rounded-3xl p-8"
@@ -175,7 +342,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                     border: `1px solid color-mix(in srgb, ${accentColor} 12%, transparent)`,
                   }}
                 >
-                  <h2 className="text-xl font-semibold mb-4">How it works</h2>
+                  <h2 className="text-xl font-semibold mb-4">More detail</h2>
                   <p className="text-muted leading-relaxed">{useCase.detailed_description}</p>
                 </div>
               )}
@@ -191,7 +358,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                 >
                   <h2 className="text-xl font-semibold mb-4">Tools & integrations</h2>
                   <div className="flex flex-wrap gap-3">
-                    {useCase.tools.map(tool => (
+                    {useCase.tools.map((tool: string) => (
                       <span
                         key={tool}
                         className="inline-flex items-center rounded-full px-4 py-2 text-sm"
@@ -251,7 +418,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                 }}
               >
                 <h3 className="font-semibold mb-2">Want this automation?</h3>
-                <p className="text-sm text-muted mb-4">We can build this for your team in 2–4 weeks.</p>
+                <p className="text-sm text-muted mb-4">Typical implementation: <span className="text-white">{impl.time}</span>.</p>
                 <a
                   href="/#contact"
                   className="btn-primary inline-flex items-center justify-center w-full px-5 py-3 rounded-full font-semibold text-sm transition-all hover:scale-[1.03]"
