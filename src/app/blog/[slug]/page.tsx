@@ -1,8 +1,9 @@
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -14,7 +15,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  
+
   if (!post) {
     return {
       title: "Post Not Found — AI Shift HQ",
@@ -102,27 +103,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* ── Nav ── */}
-      <nav className="fixed top-0 w-full z-50" style={{ background: "rgba(7,7,10,0.68)", backdropFilter: "blur(18px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="AI Shift HQ" width={34} height={34} className="rounded-lg" />
-            <div className="leading-tight">
-              <div className="text-[15px] font-semibold">AI Shift HQ</div>
-              <div className="text-[11px] tracking-wide uppercase" style={{ color: "var(--c)" }}>training + automation</div>
-            </div>
-          </Link>
-          <div className="hidden md:flex items-center gap-7 text-sm">
-            <Link href="/#services" className="text-muted hover:text-white transition-colors">Services</Link>
-            <Link href="/#examples" className="text-muted hover:text-white transition-colors">Automations</Link>
-            <Link href="/use-cases" className="text-muted hover:text-white transition-colors">Use Cases</Link>
-            <Link href="/#pricing" className="text-muted hover:text-white transition-colors">Pricing</Link>
-            <Link href="/#faq" className="text-muted hover:text-white transition-colors">FAQ</Link>
-            <Link href="/blog" className="text-white">Blog</Link>
-            <a href="/#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
-          </div>
-        </div>
-      </nav>
+
+      <Nav active="Blog" />
 
       {/* ── Article Header ── */}
       <article className="relative pt-28 md:pt-36">
@@ -245,7 +227,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <p className="mt-5 text-lg text-muted leading-relaxed max-w-xl mx-auto">
                 We run hands-on workshops and ship workflow automations for engineering and ops teams.
               </p>
-              <a href="mailto:hello@aishifthq.com" className="mt-8 inline-flex items-center justify-center btn-primary px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">
+              <a href="/#contact" className="mt-8 inline-flex items-center justify-center btn-primary px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">
                 Book a 30-min discovery call →
               </a>
             </div>
@@ -253,20 +235,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="py-10" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="AI Shift HQ" width={24} height={24} className="rounded-md" />
-            <div className="text-sm text-muted">© {new Date().getFullYear()} AI Shift HQ</div>
-          </div>
-          <div className="flex items-center gap-6 text-sm">
-            <Link href="/blog" className="text-muted hover:text-white transition-colors">Blog</Link>
-            <a href="mailto:hello@aishifthq.com" className="text-muted hover:text-white transition-colors">Contact</a>
-            <Link href="/" className="text-muted hover:text-white transition-colors">Home</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

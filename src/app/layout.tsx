@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aishifthq.com"),
-  title: "AI Shift HQ — Make AI adoption real",
+  title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
   description:
-    "Hands-on AI training + workflow automation for teams. Cursor & Claude Code workshops, and OpenClaw agents that remove repetitive work.",
+    "We deploy open-source AI agents on your infrastructure. Reporting, triage, ops, and follow-ups — automated with approvals and audit trails. No vendor lock-in.",
   keywords: [
     "AI training",
     "Cursor training",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     canonical: "https://aishifthq.com",
   },
   openGraph: {
-    title: "AI Shift HQ — Make AI adoption real",
+    title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
     description:
-      "Hands-on AI training + workflow automation for teams. Practical workshops, real outcomes.",
+      "Open-source AI agents on your infrastructure. Automated workflows with approvals and audit trails.",
     url: "https://aishifthq.com",
     siteName: "AI Shift HQ",
     type: "website",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Shift HQ — Make AI adoption real",
-    description: "Hands-on AI training + workflow automation for teams.",
+    title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+    description: "Open-source AI agents on your infrastructure. No vendor lock-in.",
   },
   icons: {
     icon: "/favicon.ico",

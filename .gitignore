@@ -22,3 +22,6 @@ npm-debug.log*
 
 # firebase
 .firebase/
+functions/node_modules/
+functions/lib/
+functions/.env

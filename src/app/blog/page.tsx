@@ -1,6 +1,7 @@
 import { getAllPosts } from "@/lib/blog";
 import Link from "next/link";
-import Image from "next/image";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "AI Adoption Blog — Practical Guides on AI Training & Automation | AI Shift HQ",
@@ -25,27 +26,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-noise">
-      {/* ── Nav ── */}
-      <nav className="fixed top-0 w-full z-50" style={{ background: "rgba(7,7,10,0.68)", backdropFilter: "blur(18px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="AI Shift HQ" width={34} height={34} className="rounded-lg" />
-            <div className="leading-tight">
-              <div className="text-[15px] font-semibold">AI Shift HQ</div>
-              <div className="text-[11px] tracking-wide uppercase" style={{ color: "var(--c)" }}>training + automation</div>
-            </div>
-          </Link>
-          <div className="hidden md:flex items-center gap-7 text-sm">
-            <Link href="/#services" className="text-muted hover:text-white transition-colors">Services</Link>
-            <Link href="/#examples" className="text-muted hover:text-white transition-colors">Automations</Link>
-            <Link href="/use-cases" className="text-muted hover:text-white transition-colors">Use Cases</Link>
-            <Link href="/#pricing" className="text-muted hover:text-white transition-colors">Pricing</Link>
-            <Link href="/#faq" className="text-muted hover:text-white transition-colors">FAQ</Link>
-            <Link href="/blog" className="text-white">Blog</Link>
-            <a href="/#contact" className="px-5 py-2 rounded-full font-semibold transition-all hover:scale-[1.03] btn-primary text-sm">Book a call</a>
-          </div>
-        </div>
-      </nav>
+      <Nav active="Blog" />
 
       {/* ── Hero ── */}
       <section className="relative pt-28 md:pt-36 pb-16">
@@ -57,7 +38,7 @@ export default function BlogPage() {
             <span className="text-gradient">real talk</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
-            Practical guides on AI training, workflow automation, and making adoption stick—learned from 30+ pilots with engineering and ops teams.
+            Practical guides on AI training, workflow automation, and making adoption stick—learned from real-world experience with engineering and ops teams.
           </p>
         </div>
       </section>
@@ -67,7 +48,6 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => {
-              // Assign colors based on index
               const colors = ["var(--a)", "var(--c)", "var(--b)"];
               const color = colors[posts.indexOf(post) % 3];
 
@@ -125,7 +105,7 @@ export default function BlogPage() {
               <p className="mt-5 text-lg text-muted leading-relaxed">
                 We run hands-on AI workshops + ship workflow automations. 4 weeks, real outcomes.
               </p>
-              <a href="mailto:hello@aishifthq.com" className="mt-8 inline-flex items-center justify-center btn-primary px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">
+              <a href="/#contact" className="mt-8 inline-flex items-center justify-center btn-primary px-7 py-4 rounded-full font-semibold text-[15px] transition-all hover:scale-[1.03]">
                 Book a 30-min call →
               </a>
             </div>
@@ -133,20 +113,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="py-10" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Image src="/images/logo.png" alt="AI Shift HQ" width={24} height={24} className="rounded-md" />
-            <div className="text-sm text-muted">© {new Date().getFullYear()} AI Shift HQ</div>
-          </div>
-          <div className="flex items-center gap-6 text-sm">
-            <Link href="/blog" className="text-muted hover:text-white transition-colors">Blog</Link>
-            <a href="mailto:hello@aishifthq.com" className="text-muted hover:text-white transition-colors">Contact</a>
-            <Link href="/" className="text-muted hover:text-white transition-colors">Home</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
