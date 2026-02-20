@@ -8,7 +8,7 @@ Every week there's a new "ChatGPT for X" tool. Most are demos in search of a use
 
 But some AI tools have crossed the line from "cool experiment" to "how did we work without this?"
 
-At AI Shift HQ, we work with engineering teams across Australia and globally. We've tested dozens of tools in production environments. Here's what actually works.
+At OpenClaw Labs, we work with engineering teams across Australia and globally. We've tested dozens of tools in production environments. Here's what actually works.
 
 ## The Stack: What We Recommend
 
@@ -129,7 +129,7 @@ Tools alone don't change behavior. You also need:
 2. **Templates** (prompt libraries, .cursorrules files, workflow docs)
 3. **Measurement** (are people using it? Is it saving time?)
 
-At AI Shift HQ, we run 4-week pilots:
+At OpenClaw Labs, we run 4-week pilots:
 - **Week 1**: Workshop (hands-on with your codebase)
 - **Weeks 2-3**: Deploy automations (OpenClaw agents)
 - **Week 4**: Rollout plan + playbooks
@@ -142,7 +142,7 @@ You walk away with tools + habits, not just licenses.
 
 We've tested everything. We'll recommend what fits your stack, budget, and workflow.
 
-[Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+[Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
 
 ---
 

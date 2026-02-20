@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aishifthq.com"),
-  title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+  metadataBase: new URL("https://openclawlabs.ai"),
+  title: "OpenClaw Labs — Deploy AI Agents That Actually Do the Work",
   description:
     "We deploy open-source AI agents on your infrastructure. Reporting, triage, ops, and follow-ups — automated with approvals and audit trails. No vendor lock-in.",
   keywords: [
@@ -18,24 +18,24 @@ export const metadata: Metadata = {
     "AI automation use cases",
     "OpenClaw automation examples",
   ],
-  authors: [{ name: "AI Shift HQ" }],
-  creator: "AI Shift HQ",
-  publisher: "AI Shift HQ",
+  authors: [{ name: "OpenClaw Labs" }],
+  creator: "OpenClaw Labs",
+  publisher: "OpenClaw Labs",
   alternates: {
-    canonical: "https://aishifthq.com",
+    canonical: "https://openclawlabs.ai",
   },
   openGraph: {
-    title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+    title: "OpenClaw Labs — Deploy AI Agents That Actually Do the Work",
     description:
       "Open-source AI agents on your infrastructure. Automated workflows with approvals and audit trails.",
-    url: "https://aishifthq.com",
-    siteName: "AI Shift HQ",
+    url: "https://openclawlabs.ai",
+    siteName: "OpenClaw Labs",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+    title: "OpenClaw Labs — Deploy AI Agents That Actually Do the Work",
     description: "Open-source AI agents on your infrastructure. No vendor lock-in.",
   },
   icons: {

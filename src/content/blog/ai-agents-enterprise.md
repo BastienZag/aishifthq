@@ -8,7 +8,7 @@ excerpt: "AI agents are moving from demos to production. Here's what we've learn
 
 But most enterprise teams are still asking: "Where do we actually use this?"
 
-At AI Shift HQ, we've deployed 50+ AI agents in production for teams across Australia and globally. Here's what actually works, what doesn't, and where this is headed.
+At OpenClaw Labs, we've deployed 50+ AI agents in production for teams across Australia and globally. Here's what actually works, what doesn't, and where this is headed.
 
 ## What Is An AI Agent? (And Why It's Not Just ChatGPT)
 
@@ -212,7 +212,7 @@ You get:
 - Runbooks (how to maintain, debug, extend)
 - Governance model (approvals, access, logs)
 
-[Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+[Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
 
 ---
 

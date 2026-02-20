@@ -117,7 +117,7 @@ export default function ContactForm({ useCaseTitle }: { useCaseTitle?: string })
       </button>
       {status === "error" && (
         <p className="text-sm text-center" style={{ color: "var(--b)" }}>
-          Something went wrong. Please try again or email hello@aishifthq.com
+          Something went wrong. Please try again or email hello@openclawlabs.ai
         </p>
       )}
     </form>

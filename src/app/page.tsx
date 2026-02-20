@@ -120,22 +120,22 @@ function SectionLabel({ text, color }: { text: string; color?: string }) {
 /* ── metadata ── */
 
 export const metadata = {
-  title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+  title: "OpenClaw Labs — Deploy AI Agents That Actually Do the Work",
   description: "We deploy open-source AI agents on your infrastructure. Reporting, triage, ops, and follow-ups — automated with approvals and audit trails. No vendor lock-in.",
   keywords: "OpenClaw, AI agents, workflow automation, AI automation, open source AI, AI deployment, AI training",
   openGraph: {
-    title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+    title: "OpenClaw Labs — Deploy AI Agents That Actually Do the Work",
     description: "Open-source AI agents on your infrastructure. Automated workflows with approvals and audit trails.",
     type: "website",
-    url: "https://aishifthq.com",
-    siteName: "AI Shift HQ",
-    images: [{ url: "https://aishifthq.com/images/og-image.png", width: 1200, height: 630, alt: "AI Shift HQ" }],
+    url: "https://openclawlabs.ai",
+    siteName: "OpenClaw Labs",
+    images: [{ url: "https://openclawlabs.ai/images/og-image.png", width: 1200, height: 630, alt: "OpenClaw Labs" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Shift HQ — Deploy AI Agents That Actually Do the Work",
+    title: "OpenClaw Labs — Deploy AI Agents That Actually Do the Work",
     description: "Open-source AI agents on your infrastructure. Automated workflows with approvals and audit trails.",
-    images: ["https://aishifthq.com/images/og-image.png"],
+    images: ["https://openclawlabs.ai/images/og-image.png"],
   },
 };
 
@@ -145,11 +145,11 @@ export default function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "AI Shift HQ",
-    "url": "https://aishifthq.com",
-    "logo": "https://aishifthq.com/images/logo.png",
+    "name": "OpenClaw Labs",
+    "url": "https://openclawlabs.ai",
+    "logo": "https://openclawlabs.ai/images/logo.png",
     "description": "AI agent deployment and workflow automation",
-    "email": "hello@aishifthq.com",
+    "email": "hello@openclawlabs.ai",
     "address": { "@type": "PostalAddress", "addressLocality": "Sydney", "addressCountry": "AU" },
   };
 
@@ -246,11 +246,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── Why AI Shift HQ ── */}
+      {/* ── Why OpenClaw Labs ── */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
-            <SectionLabel text="why ai shift hq" color="var(--c)" />
+            <SectionLabel text="why openclaw labs" color="var(--c)" />
             <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">Not another AI vendor.</h2>
             <p className="mt-5 text-lg text-muted leading-relaxed max-w-2xl mx-auto">We deploy open-source agents on your infrastructure. You own the code, the data, and the process.</p>
           </div>

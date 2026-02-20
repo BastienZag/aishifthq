@@ -4,19 +4,19 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "AI Adoption Blog — Practical Guides on AI Training & Automation | AI Shift HQ",
+  title: "AI Adoption Blog — Practical Guides on AI Training & Automation | OpenClaw Labs",
   description: "Practical guides on AI adoption, developer training, and workflow automation for teams. Learn how to implement Cursor, Claude Code, and OpenClaw agents in your organization.",
   keywords: "AI adoption, AI training, workflow automation, developer productivity, AI agents, Cursor training, Claude Code, OpenClaw automation",
   openGraph: {
-    title: "AI Adoption Blog — AI Shift HQ",
+    title: "AI Adoption Blog — OpenClaw Labs",
     description: "Practical guides on AI training, workflow automation, and making adoption stick.",
     type: "website",
-    url: "https://aishifthq.com/blog",
-    siteName: "AI Shift HQ",
+    url: "https://openclawlabs.ai/blog",
+    siteName: "OpenClaw Labs",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Adoption Blog — AI Shift HQ",
+    title: "AI Adoption Blog — OpenClaw Labs",
     description: "Practical guides on AI training and automation.",
   },
 };

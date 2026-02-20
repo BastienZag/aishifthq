@@ -8,7 +8,7 @@ You've rolled out AI tools. People say they love it. But leadership asks: "Is th
 
 "Vibes" aren't enough. You need data.
 
-At AI Shift HQ, we've run 30+ AI pilots. Here's how we measure success—and how you can too.
+At OpenClaw Labs, we've run 30+ AI pilots. Here's how we measure success—and how you can too.
 
 ## The Problem: Most Teams Don't Track Anything
 
@@ -236,7 +236,7 @@ Total setup time: 2-3 hours. Update weekly: 15 minutes.
 
 We've done this 30+ times. We'll set up tracking, run the pilot, and give you a report that leadership can act on.
 
-[Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+[Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
 
 ---
 

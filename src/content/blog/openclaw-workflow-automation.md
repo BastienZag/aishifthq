@@ -6,7 +6,7 @@ excerpt: "How we use OpenClaw to automate repetitive work—meetings to tickets,
 
 AI agents are finally useful. Not because the models got smarter (though they did), but because the infrastructure got better.
 
-At AI Shift HQ, we use **OpenClaw**—an open-source agent framework—to automate the boring parts of work. Things like:
+At OpenClaw Labs, we use **OpenClaw**—an open-source agent framework—to automate the boring parts of work. Things like:
 - Turning meetings into structured actions and Jira tickets
 - Triaging email and Slack messages
 - Generating weekly status updates from GitHub, Notion, and Slack
@@ -153,7 +153,7 @@ You get:
 
 If your team spends hours on repetitive ops work—reporting, triage, follow-ups—we can help you ship agents that actually save time.
 
-[Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+[Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
 
 ---
 

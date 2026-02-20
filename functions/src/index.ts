@@ -10,6 +10,8 @@ const ALLOWED_ORIGINS = [
   "https://aishifthq.web.app",
   "https://aishifthq.com",
   "https://www.aishifthq.com",
+  "https://openclawlabs.ai",
+  "https://www.openclawlabs.ai",
   "http://localhost:3000",
 ];
 
@@ -71,7 +73,7 @@ async function postToSlack(data: ContactFormData): Promise<void> {
       : []),
     {
       type: "context",
-      elements: [{ type: "mrkdwn", text: `Submitted from AI Shift HQ website` }],
+      elements: [{ type: "mrkdwn", text: `Submitted from OpenClaw Labs website` }],
     },
   ];
 

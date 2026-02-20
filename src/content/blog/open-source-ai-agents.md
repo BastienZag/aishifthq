@@ -55,7 +55,7 @@ SaaS platforms give you what they've built. If the feature you need isn't on the
 
 **With open source**: The code is yours. Need a custom integration? Build it. Need to modify how the agent handles a specific edge case? Change the logic. Need a custom approval workflow that sends to Slack for some actions and email for others? Implement it.
 
-This isn't theoretical. Every deployment we do at AI Shift HQ involves some customisation. No two organisations have identical workflows, and the ability to adapt the tool to the organisation (rather than the other way around) is what makes automations actually stick.
+This isn't theoretical. Every deployment we do at OpenClaw Labs involves some customisation. No two organisations have identical workflows, and the ability to adapt the tool to the organisation (rather than the other way around) is what makes automations actually stick.
 
 ## 4. Economics at Scale
 
@@ -106,7 +106,7 @@ We believe in open source AI agents, but we're not going to pretend there are no
 
 **Managed updates**: SaaS platforms update automatically. With self-hosted, you manage updates yourself (though OpenClaw makes this straightforward).
 
-**Support**: SaaS platforms include support. With open source, you rely on documentation, community, and potentially paid support from partners like AI Shift HQ.
+**Support**: SaaS platforms include support. With open source, you rely on documentation, community, and potentially paid support from partners like OpenClaw Labs.
 
 **Initial expertise**: Your team needs some technical capability to deploy and manage the infrastructure. This isn't zero, but it's far less than building automations from scratch.
 

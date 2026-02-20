@@ -29,13 +29,13 @@ export default function Nav({ active }: { active?: string }) {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/images/logo.png"
-            alt="AI Shift HQ"
+            alt="OpenClaw Labs"
             width={34}
             height={34}
             className="rounded-lg"
           />
           <div className="leading-tight">
-            <div className="text-[15px] font-semibold">AI Shift HQ</div>
+            <div className="text-[15px] font-semibold">OpenClaw Labs</div>
             <div
               className="text-[11px] tracking-wide uppercase"
               style={{ color: "var(--c)" }}

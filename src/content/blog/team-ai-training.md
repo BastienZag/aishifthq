@@ -197,7 +197,7 @@ We've done this 30+ times. We know what works.
 
 We'll run a 2-hour hands-on workshop with *your* codebase, then ship 1-3 automations over the next 2 weeks.
 
-[Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+[Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
 
 ---
 

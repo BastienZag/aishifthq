@@ -142,7 +142,7 @@ We've seen it all. We know how to navigate security teams, skeptical engineers, 
 
 Let's run a pilot for your team.
 
-[Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+[Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
 
 ---
 

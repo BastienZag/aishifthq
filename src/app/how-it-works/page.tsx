@@ -3,15 +3,15 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "How It Works — AI Shift HQ",
+  title: "How It Works — OpenClaw Labs",
   description:
     "From discovery to scale: how we deploy OpenClaw AI agents on your infrastructure in weeks, not months.",
   openGraph: {
-    title: "How It Works — AI Shift HQ",
+    title: "How It Works — OpenClaw Labs",
     description: "From discovery to scale: how we deploy OpenClaw AI agents on your infrastructure.",
     type: "website",
-    url: "https://aishifthq.com/how-it-works",
-    siteName: "AI Shift HQ",
+    url: "https://openclawlabs.ai/how-it-works",
+    siteName: "OpenClaw Labs",
   },
 };
 

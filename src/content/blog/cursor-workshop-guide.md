@@ -10,7 +10,7 @@ That's not training. That's a demo.
 
 If you want your developers to actually adopt Cursor (or Claude Code, Copilot, etc.), you need to run a workshop that builds **muscle memory** with **their code**.
 
-Here's how we do it at AI Shift HQ.
+Here's how we do it at OpenClaw Labs.
 
 ## The Problem With Generic Examples
 
@@ -119,7 +119,7 @@ We run this as a 4-week pilot: Week 1 is the workshop, Weeks 2-4 are building au
 
 We run these workshops for engineering teams across Australia and globally. If you want to level up your team's AI skills with *your* codebase, let's talk.
 
-[Book a 30-min call →](mailto:hello@aishifthq.com)
+[Book a 30-min call →](mailto:hello@openclawlabs.ai)
 
 ---
 

@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!post) {
     return {
-      title: "Post Not Found — AI Shift HQ",
+      title: "Post Not Found — OpenClaw Labs",
     };
   }
 
   return {
-    title: `${post.title} — AI Shift HQ`,
+    title: `${post.title} — OpenClaw Labs`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -49,21 +49,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     "description": post.excerpt,
     "author": {
       "@type": "Organization",
-      "name": "AI Shift HQ"
+      "name": "OpenClaw Labs"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "AI Shift HQ",
+      "name": "OpenClaw Labs",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://aishifthq.com/images/logo.png"
+        "url": "https://openclawlabs.ai/images/logo.png"
       }
     },
     "datePublished": post.date,
-    "url": `https://aishifthq.com/blog/${slug}`,
+    "url": `https://openclawlabs.ai/blog/${slug}`,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://aishifthq.com/blog/${slug}`
+      "@id": `https://openclawlabs.ai/blog/${slug}`
     }
   };
 
@@ -75,19 +75,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://aishifthq.com"
+        "item": "https://openclawlabs.ai"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://aishifthq.com/blog"
+        "item": "https://openclawlabs.ai/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://aishifthq.com/blog/${slug}`
+        "item": `https://openclawlabs.ai/blog/${slug}`
       }
     ]
   };

@@ -21,7 +21,7 @@ You're not alone. Industry data suggests 70-80% of AI pilots never reach product
 - "Process 100% of inbound support tickets within 5 minutes of receipt"
 - "Eliminate manual data entry for client onboarding"
 
-**How we handle it at AI Shift HQ**: Every engagement starts with a metric workshop. We don't touch OpenClaw until we've agreed on exactly what success looks like, how we'll measure it, and what the baseline is today. This usually takes one session. It saves months of drift.
+**How we handle it at OpenClaw Labs**: Every engagement starts with a metric workshop. We don't touch OpenClaw until we've agreed on exactly what success looks like, how we'll measure it, and what the baseline is today. This usually takes one session. It saves months of drift.
 
 ---
 
@@ -83,7 +83,7 @@ This is why buying an AI tool and "seeing what happens" doesn't work. The tool i
 
 ## How to Run a Pilot That Actually Ships
 
-Here's the playbook we use at AI Shift HQ:
+Here's the playbook we use at OpenClaw Labs:
 
 **Week 1: Scope and Metric**
 - Identify the single most painful manual workflow

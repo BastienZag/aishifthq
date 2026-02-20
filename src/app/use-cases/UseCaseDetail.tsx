@@ -58,7 +58,7 @@ export default function UseCaseDetail({ id }: { id: string }) {
       setUseCase(data);
 
       // Update page title
-      document.title = `${data.title} — AI Automation Use Case | AI Shift HQ`;
+      document.title = `${data.title} — AI Automation Use Case | OpenClaw Labs`;
 
       // Fetch related
       const { data: relData } = await supabase

@@ -32,7 +32,7 @@ People leave inspired but with no muscle memory. They don't know *when* to use A
 
 ## What Actually Works: Systems Over Events
 
-At AI Shift HQ, we've run over 30 AI adoption pilots. The ones that work share three things:
+At OpenClaw Labs, we've run over 30 AI adoption pilots. The ones that work share three things:
 
 ### 1. Hands-on training with *your* code
 Not generic examples. We use your actual repositories, tickets, and workflows. Participants write real PRs, debug real issues, and see immediate utility.
@@ -79,4 +79,4 @@ AI adoption isn't about the tool. It's about building a system where using AI is
 ---
 
 **Want help running a pilot?**  
-We run hands-on AI workshops + ship workflow automations for engineering and ops teams. [Book a 30-min discovery call →](mailto:hello@aishifthq.com)
+We run hands-on AI workshops + ship workflow automations for engineering and ops teams. [Book a 30-min discovery call →](mailto:hello@openclawlabs.ai)
